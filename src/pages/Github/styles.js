@@ -42,7 +42,6 @@ export const Button = styled(RectButton)`
 `;
 
 export const ButtonText = styled.Text`
-  margin-left: 20px;
   color: ${theme.colors.light};
   font-family: light;
   font-size: 20px;

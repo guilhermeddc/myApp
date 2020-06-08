@@ -1,9 +1,15 @@
 import React, { useEffect } from 'react';
-import { ActivityIndicator } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { ActivityIndicator, View } from 'react-native';
+import { useNavigation, CommonActions } from '@react-navigation/native';
+import styled from 'styled-components/native';
 import * as Font from 'expo-font';
 
 import BackGround from '../../components/Background';
+
+export const Container = styled.View`
+  flex: 1;
+  justify-content: center;
+`;
 
 const Loading = () => {
   const navigation = useNavigation();
@@ -16,7 +22,16 @@ const Loading = () => {
       semiBold: require('../../../assets/fonts/Montserrat-SemiBold.ttf'),
       bold: require('../../../assets/fonts/Montserrat-Bold.ttf'),
     });
-    navigation.navigate('Home');
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [
+          {
+            name: 'Home',
+          },
+        ],
+      }),
+    );
   };
 
   useEffect(() => {
@@ -25,7 +40,9 @@ const Loading = () => {
 
   return (
     <BackGround>
-      <ActivityIndicator size="large" />
+      <Container>
+        <ActivityIndicator size="large" color="#ECECEC" />
+      </Container>
     </BackGround>
   );
 };

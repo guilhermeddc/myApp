@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, Linking } from 'react-native';
 import api from 'axios';
 
 import {
@@ -26,15 +26,15 @@ const Github = () => {
     handleGetProfile();
   }, []);
 
-  console.log(profile.avatar_url);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Container>
         <ImageProfile source={{ uri: profile.avatar_url }} />
         <Name>{profile.name}</Name>
         <Login>{profile.login}</Login>
-        <Button>
-          <ButtonText>Ver perfil online</ButtonText>
+        <Button
+          onPress={() => Linking.openURL('https://github.com/guilhermeddc')}>
+          <ButtonText>Ver no Github</ButtonText>
         </Button>
         <Bio>{profile.bio}</Bio>
         <Line />
