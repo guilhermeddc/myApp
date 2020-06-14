@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, Linking } from 'react-native';
+import { SafeAreaView, Linking, Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import api from 'axios';
+
+import theme from '../../styles/theme';
+import Navigator from '../../components/Navigator';
 
 import {
   Container,
+  ButtonBack,
   ImageProfile,
   Name,
   Login,
@@ -11,10 +16,17 @@ import {
   ButtonText,
   Bio,
   Line,
+  Content,
+  PublicRepos,
+  Followers,
+  Following,
+  Margin,
 } from './styles';
 
 const Github = () => {
   const [profile, setProfile] = useState([]);
+  const navigation = useNavigation();
+  const dim = Dimensions.get('screen');
 
   const handleGetProfile = async () => {
     const response = await api.get('https://api.github.com/users/guilhermeddc');
@@ -28,6 +40,10 @@ const Github = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      <Navigator
+        onPress={() => navigation.goBack()}
+        backgroundColor={theme.colors.dark}
+      />
       <Container>
         <ImageProfile source={{ uri: profile.avatar_url }} />
         <Name>{profile.name}</Name>
@@ -38,6 +54,14 @@ const Github = () => {
         </Button>
         <Bio>{profile.bio}</Bio>
         <Line />
+        <Content>
+          <PublicRepos>
+            Número de repositórios públicos: {profile.public_repos}
+          </PublicRepos>
+          <Followers>Followers: {profile.followers}</Followers>
+          <Following>Following: {profile.following}</Following>
+        </Content>
+        <Margin />
       </Container>
     </SafeAreaView>
   );

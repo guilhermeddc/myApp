@@ -1,7 +1,9 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
 import theme from '../../styles/theme';
+const dim = Dimensions.get('screen');
 
 export const Container = styled.View`
   flex: 1;
@@ -9,8 +11,8 @@ export const Container = styled.View`
 `;
 
 export const LogoStyled = styled.Image`
-  width: 120px;
-  height: 120px;
+  width: ${dim.width * 0.25}px;
+  height: ${dim.width * 0.25}px;
   margin: 60px auto 0;
 `;
 
@@ -18,7 +20,7 @@ export const Title = styled.Text`
   color: ${theme.colors.light};
   padding: 10px;
   font-family: semiBold;
-  font-size: 32px;
+  font-size: ${dim.width * 0.075}px;
   text-align: center;
   text-shadow: 0 5px 4px ${theme.colors.dark};
 `;
@@ -27,22 +29,24 @@ export const SubTitle = styled.Text`
   padding-top: 10px;
   color: ${theme.colors.light};
   font-family: medium;
-  font-size: 24px;
+  font-size: ${dim.width * 0.056}px;
   text-align: center;
   text-shadow: 0 3px 4px ${theme.colors.dark};
-  margin-bottom: 20px;
+  margin-bottom: ${dim.width < 400 ? '10' : '20'}px;
 `;
 
-export const ContentScrollView = styled.ScrollView`
+export const ContentScrollView = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
+})`
   flex: 1;
-  padding: 10px;
+  padding: 0 10px;
 `;
 
 export const ButtonContent = styled(RectButton)`
-  margin-top: 10px;
+  margin-top: ${dim.width < 400 ? '7' : '10'}px;
   border-radius: 5px;
   width: 100%;
-  background-color: ${theme.colors.light};
+  background-color: ${theme.colors.light}c0;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -50,22 +54,22 @@ export const ButtonContent = styled(RectButton)`
 
 export const ButtonContentText = styled.Text`
   color: ${theme.colors.dark};
-  padding: 15px 20px;
-  font-family: medium;
-  font-size: 18px;
+  padding: ${dim.width < 410 ? '3.5%' : '17px'} 20px;
+  font-family: semiBold;
+  font-size: ${dim.width * 0.04}px;
 `;
 
 export const ButtonScrollView = styled.ScrollView.attrs({
   showsHorizontalScrollIndicator: false,
   horizontal: true,
 })`
-  margin-top: 20px;
-  max-height: 150px;
+  margin-top: 10px;
+  max-height: ${dim.width < 360 ? 120 : 140}px;
 `;
 
 export const Button = styled(RectButton)`
-  width: 100px;
-  height: 120px;
+  width: ${dim.width < 360 ? 80 : 110}px;
+  height: ${dim.width < 360 ? 100 : 130}px;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
@@ -73,9 +77,13 @@ export const Button = styled(RectButton)`
 `;
 
 export const ButtonText = styled.Text`
-  margin-top: 10px;
+  margin: 10px 0;
   color: ${theme.colors.light};
   text-align: center;
   font-family: medium;
-  font-size: 16px;
+  font-size: ${dim.width * 0.04}px;
+`;
+
+export const Margin = styled.View`
+  margin: 5px;
 `;

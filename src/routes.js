@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Experience from './pages/Experience';
 import Education from './pages/Education';
+import Projects from './pages/Projects';
 import Skills from './pages/Skills';
 import Github from './pages/Github';
 
@@ -19,6 +20,7 @@ const Routes = () => {
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Experience" component={Experience} />
         <Stack.Screen name="Education" component={Education} />
+        <Stack.Screen name="Projects" component={Projects} />
         <Stack.Screen name="Skills" component={Skills} />
         <Stack.Screen name="Github" component={Github} />
       </Stack.Navigator>

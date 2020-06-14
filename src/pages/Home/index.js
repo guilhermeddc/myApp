@@ -19,6 +19,7 @@ import {
   ButtonScrollView,
   Button,
   ButtonText,
+  Margin,
 } from './styles';
 
 const Home = () => {
@@ -56,7 +57,7 @@ const Home = () => {
 
         <ContentScrollView>
           <ButtonContent onPress={() => navigation.navigate('Profile')}>
-            <ButtonContentText>Sobre mim</ButtonContentText>
+            <ButtonContentText>Meu Perfil</ButtonContentText>
             <Feather
               name="arrow-right"
               size={24}
@@ -85,6 +86,16 @@ const Home = () => {
             />
           </ButtonContent>
 
+          <ButtonContent onPress={() => navigation.navigate('Projects')}>
+            <ButtonContentText>Projetos realizados</ButtonContentText>
+            <Feather
+              name="arrow-right"
+              size={24}
+              color={theme.colors.dark}
+              style={{ marginRight: 20 }}
+            />
+          </ButtonContent>
+
           <ButtonContent onPress={() => navigation.navigate('Skills')}>
             <ButtonContentText>Skills</ButtonContentText>
             <Feather
@@ -94,6 +105,7 @@ const Home = () => {
               style={{ marginRight: 20 }}
             />
           </ButtonContent>
+          <Margin />
         </ContentScrollView>
 
         <ButtonScrollView renderToHardwareTextureAndroid>

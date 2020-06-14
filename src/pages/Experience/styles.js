@@ -1,16 +1,19 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
+
 import theme from '../../styles/theme';
+const dim = Dimensions.get('screen');
 
 export const Container = styled.ScrollView`
   flex: 1;
-  background: ${theme.colors.primary};
-  padding: 30px 20px 20px;
+  background: ${theme.colors.primary}aa;
+  padding: 5px 20px 20px;
 `;
 
 export const Button = styled(RectButton)`
-  width: 32px;
-  height: 32px;
+  width: ${dim.width < 360 ? 24 : 32}px;
+  height: ${dim.width < 360 ? 24 : 32}px;
   margin-bottom: 10px;
 `;
 
